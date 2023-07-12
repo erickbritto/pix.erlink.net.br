@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erlink.Net</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background-color: #101935;
+      color: #fff;
+    }
+
+    .container {
+      background-color: #1f3054;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #ccc;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .button-container button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 5px;
+      transition: opacity 0.3s ease;
+    }
+
+    .button-container button i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    .button-container button:hover {
+      opacity: 0.8;
+    }
+
+    .instruction-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .instruction-container p {
+      color: #ccc;
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+
+    .instruction-container .brand {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .instruction-container .brand i {
+      margin-right: 5px;
+    }
+
+    .instruction-container i {
+      font-size: 32px;
+      color: #ccc;
+      margin-top: 20px;
+    }
+
+    #qrcode {
+      margin-top: 40px;
+      max-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer {
+      font-size: 12px;
+      margin-top: 20px;
+      color: #ccc;
+    }
+  </style>
+  <script>
+    function copyToClipboard(text) {
+      var input = document.createElement("input");
+      input.value = text;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand("copy");
+      document.body.removeChild(input);
+      alert("Chave PIX e CNPJ copiados para a área de transferência: " + text);
+    }
+
+    function generateQRCode(text) {
+      var typeNumber = 4; // Controla a densidade do QR Code (1 a 40)
+      var errorCorrectionLevel = 'L'; // Nível de correção de erro (L, M, Q, H)
+      var qr = qrcode(typeNumber, errorCorrectionLevel);
+      qr.addData(text);
+      qr.make();
+
+      var qrCodeDiv = document.getElementById("qrcode");
+      qrCodeDiv.innerHTML = qr.createImgTag(4, 0); // Tamanho do QR Code e margem
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Copie a chave PIX e cole no aplicativo do seu banco</h1>
+    <p>Clique no botão abaixo para copiar a chave PIX e CNPJ:</p>
+    <div class="button-container">
+      <button onclick="copyToClipboard('42204291000180')"><i class="fas fa-id-card"></i>Copiar CNPJ</button>
+      <button onclick="copyToClipboard('42204291000180')"><i class="fas fa-key"></i>Copiar Chave PIX</button>
+    </div>
+  </div>
+  <div class="instruction-container">
+    <h2 class="brand"><i class="fas fa-link"></i>Erlink.Net</h2>
+    <p>Copie a chave PIX e cole no banco</p>
+    <i class="fas fa-mobile-alt"></i>
+  </div>
+  <div id="qrcode"></div>
+  <div class="footer">
+    <p>EriSystem Tecnologia © 2023.</p>
+  </div>
+  <script>
+    // Gerar o QR Code com a chave PIX CNPJ
+    generateQRCode("CPNJ: 42204291000180");
+  </script>
+</body>
+</html>
