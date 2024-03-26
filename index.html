@@ -4,7 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Erlink.Net</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -88,13 +87,6 @@
       margin-top: 20px;
     }
 
-    #qrcode {
-      margin-top: 40px;
-      max-width: 200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
     .footer {
       font-size: 12px;
       margin-top: 20px;
@@ -110,17 +102,6 @@
       document.execCommand("copy");
       document.body.removeChild(input);
       alert("Chave PIX e CNPJ copiados para a área de transferência: " + text);
-    }
-
-    function generateQRCode(text) {
-      var typeNumber = 4; // Controla a densidade do QR Code (1 a 40)
-      var errorCorrectionLevel = 'L'; // Nível de correção de erro (L, M, Q, H)
-      var qr = qrcode(typeNumber, errorCorrectionLevel);
-      qr.addData(text);
-      qr.make();
-
-      var qrCodeDiv = document.getElementById("qrcode");
-      qrCodeDiv.innerHTML = qr.createImgTag(4, 0); // Tamanho do QR Code e margem
     }
   </script>
 </head>
@@ -138,13 +119,8 @@
     <p>Copie a chave PIX e cole no banco</p>
     <i class="fas fa-mobile-alt"></i>
   </div>
-  <div id="qrcode"></div>
   <div class="footer">
     <p>EriSystem Tecnologia © 2023.</p>
   </div>
-  <script>
-    // Gerar o QR Code com a chave PIX CNPJ
-    generateQRCode("CPNJ: 42204291000180");
-  </script>
 </body>
 </html>
